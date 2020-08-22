@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin}">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--css-->
+    <link th:href="@{/css/custom.css}" rel="stylesheet"/>
+    <!--js-->
+    <script th:src="@{/js/min.js}"></script>
+
+</head>
+<body>
+<!--<div layout:fragment="content">-->
+
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>Name</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Quantity</th>-->
+<!--            <th>Category</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="p: ${products}">-->
+<!--            <td th:text="${p.id}">ID</td>-->
+<!--            <td th:text="${p.name}">Name</td>-->
+<!--            <td th:text="${p.price}">Price</td>-->
+<!--            <td th:text="${p.quantity}">Quantity</td>-->
+<!--            <td th:text="${p.category.name}">Category</td>-->
+<!--        </tr>-->
+
+<!--    </table>-->
+<div class="p-3" layout:fragment="content">
+   <div class="m-3">
+       <a th:href="@{'/addproduct'}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">add product</a>
+   </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p: ${products}">
+            <td th:text="${p.id}">ID</td>
+            <td th:text="${p.name}">Name</td>
+            <td th:text="${p.price}">Price</td>
+            <td th:text="${p.quantity}">Quantity</td>
+            <td th:text="${p.category.name}">Category</td>
+            <td>
+                <a th:href="@{'/delete/'+${p.id}}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">delete</a>
+                <a th:href="@{'/update/'+${p.id}}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">update</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
